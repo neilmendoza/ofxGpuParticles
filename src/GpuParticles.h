@@ -35,6 +35,9 @@
 
 namespace itg
 {
+    /**
+     * For now, only uses RGBA and TEXTURE_RECTANGLE to make usage simpler
+     */
     class GpuParticles
     {
     public:
@@ -51,15 +54,21 @@ namespace itg
         };
         
         void init(unsigned width, unsigned height,
-                  ofPrimitiveMode primitive = OF_PRIMITIVE_POINTS, unsigned numDataTextures = 2, bool loadShaders = true);
-        
+                  ofPrimitiveMode primitive = OF_PRIMITIVE_POINTS, bool loadShaders = true, unsigned numDataTextures = 2);
         void update();
         void draw();
+        
         void loadDataTexture(unsigned idx, float* data,
+                             unsigned x = 0, unsigned y = 0, unsigned width = 0, unsigned height = 0);
+        void zeroDataTexture(unsigned idx,
                              unsigned x = 0, unsigned y = 0, unsigned width = 0, unsigned height = 0);
         
         unsigned getWidth() const { return width; }
         unsigned getHeight() const { return height; }
+        unsigned getSize() const { return size; }
+        
+        ofEvent<ofShader> updateEvent;
+        ofEvent<ofShader> drawEvent;
         
         // advanced
         ofShader& getUpdateShaderRef() { return updateShader; }
@@ -73,6 +82,6 @@ namespace itg
         ofVboMesh mesh;
         ofShader updateShader, drawShader;
         unsigned currentReadFbo;
-        unsigned width, height;
+        unsigned width, height, size;
     };
 }

@@ -37,11 +37,12 @@ namespace itg
     const string GpuParticles::UPDATE_SHADER_NAME = "update";
     const string GpuParticles::DRAW_SHADER_NAME = "draw";
     
-    void GpuParticles::init(unsigned width, unsigned height,
-                            ofPrimitiveMode primitive, unsigned numDataTextures, bool loadShaders)
+    void GpuParticles::init(unsigned width, unsigned height, ofPrimitiveMode primitive, bool loadShaders, unsigned numDataTextures)
     {
         this->width = width;
         this->height = height;
+        
+        size = width * height * 4;
         
         currentReadFbo = 0;
         
@@ -66,7 +67,7 @@ namespace itg
         {
             for (int x = 0; x < width; ++x)
             {
-                mesh.addVertex(ofVec3f(2.f * x / (float)width - 1.f, 2.f * y / (float)height - 1.f, 0));
+                mesh.addVertex(ofVec3f(200.f * x / (float)width - 100.f, 200.f * y / (float)height - 100.f, -500.f));
                 mesh.addTexCoord(ofVec2f(x, y));
             }
         }
@@ -93,6 +94,7 @@ namespace itg
         fbos[1 - currentReadFbo].activateAllDrawBuffers();
         
         updateShader.begin();
+        ofNotifyEvent(updateEvent, updateShader, this);
         setUniforms(updateShader);
         texturedQuad(-1, -1, 2, 2, width, height);
         updateShader.end();
@@ -105,6 +107,7 @@ namespace itg
     void GpuParticles::draw()
     {
         drawShader.begin();
+        ofNotifyEvent(drawEvent, drawShader, this);
         setUniforms(drawShader);
         mesh.draw();
         drawShader.end();
@@ -132,6 +135,17 @@ namespace itg
             fbos[currentReadFbo].getTextureReference(idx).unbind();
         }
         else ofLogError() << "Trying to load data into non-existent buffer.";
+    }
+    
+    void GpuParticles::zeroDataTexture(unsigned idx,
+                                       unsigned x, unsigned y, unsigned width, unsigned height)
+    {
+        if (!width) width = this->width;
+        if (!height) height = this->height;
+        float* zeroes = new float[width * height];
+        memset(zeroes, 0, sizeof(float) * width * height);
+        loadDataTexture(idx, zeroes, x, y, width, height);
+        delete[] zeroes;
     }
     
     void GpuParticles::texturedQuad(float x, float y, float width, float height, float s, float t)
