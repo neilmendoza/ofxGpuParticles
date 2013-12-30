@@ -44,6 +44,7 @@ namespace itg
         static const string UNIFORM_PREFIX;
         static const string UPDATE_SHADER_NAME;
         static const string DRAW_SHADER_NAME;
+        static const unsigned FLOATS_PER_TEXEL = 4;
         
         // you don't have to use these but makes
         // code more readable

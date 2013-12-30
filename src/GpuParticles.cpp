@@ -41,9 +41,7 @@ namespace itg
     {
         this->width = width;
         this->height = height;
-        
-        size = width * height * 4;
-        
+        size = width * height * FLOATS_PER_TEXEL;
         currentReadFbo = 0;
         
         // fbos
@@ -99,6 +97,7 @@ namespace itg
         texturedQuad(-1, -1, 2, 2, width, height);
         updateShader.end();
         glPopAttrib();
+        
         fbos[1 - currentReadFbo].end();
         
         currentReadFbo = 1 - currentReadFbo;
@@ -119,7 +118,7 @@ namespace itg
         {
             ostringstream oss;
             oss << UNIFORM_PREFIX << ofToString(i);
-            updateShader.setUniformTexture(oss.str().c_str(), fbos[currentReadFbo].getTextureReference(i), i + 1);
+            shader.setUniformTexture(oss.str().c_str(), fbos[currentReadFbo].getTextureReference(i), i + 1);
         }
     }
     
@@ -142,8 +141,8 @@ namespace itg
     {
         if (!width) width = this->width;
         if (!height) height = this->height;
-        float* zeroes = new float[width * height];
-        memset(zeroes, 0, sizeof(float) * width * height);
+        float* zeroes = new float[width * height * FLOATS_PER_TEXEL];
+        memset(zeroes, 0, sizeof(float) * width * height * FLOATS_PER_TEXEL);
         loadDataTexture(idx, zeroes, x, y, width, height);
         delete[] zeroes;
     }
