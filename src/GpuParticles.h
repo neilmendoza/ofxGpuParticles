@@ -54,6 +54,8 @@ namespace itg
             VELOCITY
         };
         
+        GpuParticles();
+        
         void init(unsigned width, unsigned height,
                   ofPrimitiveMode primitive = OF_PRIMITIVE_POINTS, bool loadShaders = true, unsigned numDataTextures = 2);
         void update();
@@ -67,6 +69,8 @@ namespace itg
         unsigned getWidth() const { return width; }
         unsigned getHeight() const { return height; }
         unsigned getSize() const { return size; }
+        
+        void setTextureLocation(unsigned textureLocation) { this->textureLocation = textureLocation; }
         
         ofEvent<ofShader> updateEvent;
         ofEvent<ofShader> drawEvent;
@@ -83,6 +87,7 @@ namespace itg
         ofVboMesh mesh;
         ofShader updateShader, drawShader;
         unsigned currentReadFbo;
+        unsigned textureLocation;
         unsigned width, height, size;
     };
 }

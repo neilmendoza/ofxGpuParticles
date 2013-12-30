@@ -37,12 +37,15 @@ namespace itg
     const string GpuParticles::UPDATE_SHADER_NAME = "update";
     const string GpuParticles::DRAW_SHADER_NAME = "draw";
     
+    GpuParticles::GpuParticles() : currentReadFbo(0), textureLocation(0)
+    {
+    }
+    
     void GpuParticles::init(unsigned width, unsigned height, ofPrimitiveMode primitive, bool loadShaders, unsigned numDataTextures)
     {
         this->width = width;
         this->height = height;
         size = width * height * FLOATS_PER_TEXEL;
-        currentReadFbo = 0;
         
         // fbos
         ofFbo::Settings s;
@@ -118,7 +121,7 @@ namespace itg
         {
             ostringstream oss;
             oss << UNIFORM_PREFIX << ofToString(i);
-            shader.setUniformTexture(oss.str().c_str(), fbos[currentReadFbo].getTextureReference(i), i + 1);
+            shader.setUniformTexture(oss.str().c_str(), fbos[currentReadFbo].getTextureReference(i), i + textureLocation);
         }
     }
     
