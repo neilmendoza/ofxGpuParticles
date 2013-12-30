@@ -72,6 +72,7 @@ namespace itg
         
         void setTextureLocation(unsigned textureLocation) { this->textureLocation = textureLocation; }
         
+        // listen to these events to set custom uniforms
         ofEvent<ofShader> updateEvent;
         ofEvent<ofShader> drawEvent;
         
