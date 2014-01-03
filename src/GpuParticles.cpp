@@ -64,6 +64,7 @@ namespace itg
         }
         
         // mesh
+        mesh.clear();
         for (int y = 0; y < height; ++y)
         {
             for (int x = 0; x < width; ++x)

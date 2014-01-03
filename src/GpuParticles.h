@@ -76,6 +76,8 @@ namespace itg
         ofEvent<ofShader> updateEvent;
         ofEvent<ofShader> drawEvent;
         
+        ofVboMesh& getMeshRef() { return mesh; }
+        
         // advanced
         ofShader& getUpdateShaderRef() { return updateShader; }
         ofShader& getDrawShaderRef() { return drawShader; }
