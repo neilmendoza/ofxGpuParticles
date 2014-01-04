@@ -6,14 +6,14 @@ void testApp::setup()
     ofBackground(0);
     ofSetFrameRate(60);
     
-    // 4,000,000 particles
-    unsigned w = 2000;
-    unsigned h = 2000;
+    // 1,000,000 particles
+    unsigned w = 1000;
+    unsigned h = 1000;
     
     particles.init(w, h);
     
     // initial positions
-    // use new to allocate 16,000,000 floats on the heap rather than
+    // use new to allocate 4,000,000 floats on the heap rather than
     // the stack
     float* particlePosns = new float[w * h * 4];
     for (unsigned y = 0; y < h; ++y)
