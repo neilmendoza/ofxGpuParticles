@@ -68,7 +68,7 @@ namespace itg
         
         unsigned getWidth() const { return width; }
         unsigned getHeight() const { return height; }
-        unsigned getSize() const { return size; }
+        unsigned getNumFloats() const { return numFloats; }
         
         void setTextureLocation(unsigned textureLocation) { this->textureLocation = textureLocation; }
         
@@ -91,6 +91,6 @@ namespace itg
         ofShader updateShader, drawShader;
         unsigned currentReadFbo;
         unsigned textureLocation;
-        unsigned width, height, size;
+        unsigned width, height, numFloats;
     };
 }

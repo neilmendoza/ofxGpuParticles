@@ -45,7 +45,7 @@ namespace itg
     {
         this->width = width;
         this->height = height;
-        size = width * height * FLOATS_PER_TEXEL;
+        numFloats = width * height * FLOATS_PER_TEXEL;
         
         // fbos
         ofFbo::Settings s;

@@ -5,46 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>54EB5650-1CB6-4FCF-8A76-9C6FB5CF182B</string>
+	<string>184EA593-AD33-431B-B567-5BA1D9913815</string>
 	<key>IDESourceControlProjectName</key>
 	<string>example</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>72CBFA64-4285-4642-B69D-80BDCB3D9294</key>
-		<string>ssh://bitbucket.org/neilmendoza/particles-example.git</string>
-		<key>D1689ECE-E402-42C7-9F36-0C8E34EB14F5</key>
-		<string>ssh://bitbucket.org/neilmendoza/ofxgpuparticles.git</string>
+		<key>F59B8D2A-A310-44C8-84C0-C81061E4CE3D</key>
+		<string>ssh://github.com/neilmendoza/ofxGpuParticles.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>example.xcodeproj/project.xcworkspace</string>
+	<string>example/example.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>72CBFA64-4285-4642-B69D-80BDCB3D9294</key>
-		<string>../..</string>
-		<key>D1689ECE-E402-42C7-9F36-0C8E34EB14F5</key>
-		<string>../../../../../addons/ofxGpuParticles</string>
+		<key>F59B8D2A-A310-44C8-84C0-C81061E4CE3D</key>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://bitbucket.org/neilmendoza/particles-example.git</string>
+	<string>ssh://github.com/neilmendoza/ofxGpuParticles.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>72CBFA64-4285-4642-B69D-80BDCB3D9294</string>
+	<string>F59B8D2A-A310-44C8-84C0-C81061E4CE3D</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>72CBFA64-4285-4642-B69D-80BDCB3D9294</string>
-			<key>IDESourceControlWCCName</key>
-			<string>example</string>
-		</dict>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>D1689ECE-E402-42C7-9F36-0C8E34EB14F5</string>
+			<string>F59B8D2A-A310-44C8-84C0-C81061E4CE3D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ofxGpuParticles</string>
 		</dict>
