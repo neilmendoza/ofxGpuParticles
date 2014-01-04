@@ -6,7 +6,7 @@ This openFrameworks addon makes it slightly easier to create particle systems in
 
 https://github.com/openframeworks/openFrameworks/issues/2687
 
-To Fix it you can comment out the following line in **ofFbo.cpp**...
+To fix it you can comment out the following line in **ofFbo.cpp**...
 
 ```cpp
 settings.numColorbuffers = settings.colorFormats.size();
