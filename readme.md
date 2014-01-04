@@ -2,7 +2,7 @@
 
 This openFrameworks addon makes it slightly easier to create particle systems in GLSL.
 
-**N.B** Does not work in OF 0.8 due to a bug with ofFbo...
+**N.B.** Does not work in OF 0.8 due to a bug with ofFbo...
 
 https://github.com/openframeworks/openFrameworks/issues/2687
 
