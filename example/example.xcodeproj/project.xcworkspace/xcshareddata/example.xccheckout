@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>54EB5650-1CB6-4FCF-8A76-9C6FB5CF182B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>example</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>72CBFA64-4285-4642-B69D-80BDCB3D9294</key>
+		<string>ssh://bitbucket.org/neilmendoza/particles-example.git</string>
+		<key>D1689ECE-E402-42C7-9F36-0C8E34EB14F5</key>
+		<string>ssh://bitbucket.org/neilmendoza/ofxgpuparticles.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>example.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>72CBFA64-4285-4642-B69D-80BDCB3D9294</key>
+		<string>../..</string>
+		<key>D1689ECE-E402-42C7-9F36-0C8E34EB14F5</key>
+		<string>../../../../../addons/ofxGpuParticles</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://bitbucket.org/neilmendoza/particles-example.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>72CBFA64-4285-4642-B69D-80BDCB3D9294</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>72CBFA64-4285-4642-B69D-80BDCB3D9294</string>
+			<key>IDESourceControlWCCName</key>
+			<string>example</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D1689ECE-E402-42C7-9F36-0C8E34EB14F5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxGpuParticles</string>
+		</dict>
+	</array>
+</dict>
+</plist>
