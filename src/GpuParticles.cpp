@@ -137,7 +137,7 @@ namespace itg
             glTexSubImage2D(GL_TEXTURE_RECTANGLE_ARB, 0, x, y, width, height, GL_RGBA, GL_FLOAT, data);
             fbos[currentReadFbo].getTextureReference(idx).unbind();
         }
-        else ofLogError() << "Trying to load data into non-existent buffer.";
+        else ofLogError() << "Trying to load data from array into non-existent buffer.";
     }
     
     void GpuParticles::zeroDataTexture(unsigned idx,
@@ -167,5 +167,52 @@ namespace itg
         glTexCoord2f(0, t);
         glVertex3f(x, y + height, 0);
         glEnd();
+    }
+    
+    void GpuParticles::save(const string& fileName)
+    {
+        ofstream fileStream(ofToDataPath(fileName, true).c_str());
+        if (fileStream.is_open())
+        {
+            for (unsigned i = 0; i < fbos[currentReadFbo].getNumTextures(); ++i)
+            {
+                if (i) fileStream << "|";
+                ofFloatPixels pixels;
+                fbos[currentReadFbo].getTextureReference(i).readToPixels(pixels);
+                for (unsigned j = 0; j < pixels.size(); ++j)
+                {
+                    if (j) fileStream << ",";
+                    fileStream << pixels[j];
+                }
+            }
+            fileStream.close();
+        }
+        else ofLogError() << "Could not save particle data to " << ofToDataPath(fileName, true);
+    }
+    
+    void GpuParticles::load(const string& fileName)
+    {
+        ifstream fileStream(ofToDataPath(fileName, true).c_str());
+        if (fileStream.is_open())
+        {
+            string data((istreambuf_iterator<char>(fileStream)), std::istreambuf_iterator<char>());
+            vector<string> textureData = ofSplitString(data, "|");
+            for (unsigned i = 0; i < textureData.size(); ++i)
+            {
+                if (i < fbos[currentReadFbo].getNumTextures())
+                {
+                    vector<string> floatsAsText = ofSplitString(textureData[i], ",");
+                    vector<float> floats(floatsAsText.size(), 0);
+                    for (unsigned j = 0; j < floats.size(); ++j)
+                    {
+                        floats[j] = atof(floatsAsText[j].c_str());
+                    }
+                    loadDataTexture(i, &floats[0]);
+                }
+                else ofLogError() << "Trying to load data from file into non-existent buffer.";
+            }
+            fileStream.close();
+        }
+        else ofLogError() << "Could not load particle data from " << ofToDataPath(fileName, true);
     }
 }
