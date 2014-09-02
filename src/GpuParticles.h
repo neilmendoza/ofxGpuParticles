@@ -85,6 +85,10 @@ namespace itg
         void save(const string& fileName);
         void load(const string& fileName);
         
+        ofFbo& getFbo(unsigned idx) { return fbos[idx]; }
+        
+        unsigned getCurrentReadFbo() const { return currentReadFbo; }
+        
     private:
         void texturedQuad(float x, float y, float width, float height, float s, float t);
         void setUniforms(ofShader& shader);
