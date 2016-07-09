@@ -122,7 +122,7 @@ namespace itg
         {
             ostringstream oss;
             oss << UNIFORM_PREFIX << ofToString(i);
-            shader.setUniformTexture(oss.str().c_str(), fbos[currentReadFbo].getTextureReference(i), i + textureLocation);
+            shader.setUniformTexture(oss.str().c_str(), fbos[currentReadFbo].getTexture(i), i + textureLocation);
         }
     }
     
@@ -133,9 +133,9 @@ namespace itg
         {
             if (!width) width = this->width;
             if (!height) height = this->height;
-            fbos[currentReadFbo].getTextureReference(idx).bind();
+            fbos[currentReadFbo].getTexture(idx).bind();
             glTexSubImage2D(GL_TEXTURE_RECTANGLE_ARB, 0, x, y, width, height, GL_RGBA, GL_FLOAT, data);
-            fbos[currentReadFbo].getTextureReference(idx).unbind();
+            fbos[currentReadFbo].getTexture(idx).unbind();
         }
         else ofLogError() << "Trying to load data from array into non-existent buffer.";
     }
@@ -178,7 +178,7 @@ namespace itg
             {
                 if (i) fileStream << "|";
                 ofFloatPixels pixels;
-                fbos[currentReadFbo].getTextureReference(i).readToPixels(pixels);
+                fbos[currentReadFbo].getTexture(i).readToPixels(pixels);
                 for (unsigned j = 0; j < pixels.size(); ++j)
                 {
                     if (j) fileStream << ",";
