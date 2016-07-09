@@ -3,7 +3,9 @@
 #include "ofMain.h"
 #include "ofxGpuParticles.h"
 
-class testApp : public ofBaseApp
+#define _PROGRAMMABLE_RENDERER
+
+class ofApp : public ofBaseApp
 {
 public:
     void setup();

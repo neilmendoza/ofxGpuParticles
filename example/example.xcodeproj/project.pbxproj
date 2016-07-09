@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29D734F0DDECC8C5978185D7 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00A1BFCBB38848AD0E0C8539 /* testApp.cpp */; };
+		29D734F0DDECC8C5978185D7 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00A1BFCBB38848AD0E0C8539 /* ofApp.cpp */; };
 		900DDEDCFE3FAF10C3318D7C /* GpuParticles.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F023988BFE9B8D4B44299A5E /* GpuParticles.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
@@ -43,9 +43,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00A1BFCBB38848AD0E0C8539 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
+		00A1BFCBB38848AD0E0C8539 /* ofApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofApp.cpp; path = src/ofApp.cpp; sourceTree = SOURCE_ROOT; };
 		0D69749DC16A63170FE23709 /* GpuParticles.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = GpuParticles.h; path = ../../../addons/ofxGpuParticles/src/GpuParticles.h; sourceTree = SOURCE_ROOT; };
-		2D129AB0F7D46B8DFCEADEDB /* testApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
+		28EF34951D317BE000012D57 /* draw.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = draw.frag; sourceTree = "<group>"; };
+		28EF34961D317BE000012D57 /* draw.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = draw.vert; sourceTree = "<group>"; };
+		28EF34971D317BE000012D57 /* update.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = update.frag; sourceTree = "<group>"; };
+		28EF34981D317BE000012D57 /* update.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = update.vert; sourceTree = "<group>"; };
+		28EF349A1D317BE000012D57 /* draw.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = draw.frag; sourceTree = "<group>"; };
+		28EF349B1D317BE000012D57 /* draw.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = draw.vert; sourceTree = "<group>"; };
+		28EF349C1D317BE000012D57 /* update.frag */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = update.frag; sourceTree = "<group>"; };
+		28EF349D1D317BE000012D57 /* update.vert */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = update.vert; sourceTree = "<group>"; };
+		2D129AB0F7D46B8DFCEADEDB /* ofApp.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofApp.h; path = src/ofApp.h; sourceTree = SOURCE_ROOT; };
 		40562A1AC8141EEAE8DE9FD6 /* ofxGpuParticles.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxGpuParticles.h; path = ../../../addons/ofxGpuParticles/src/ofxGpuParticles.h; sourceTree = SOURCE_ROOT; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* exampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +76,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28EF34941D317BE000012D57 /* shaders120 */ = {
+			isa = PBXGroup;
+			children = (
+				28EF34951D317BE000012D57 /* draw.frag */,
+				28EF34961D317BE000012D57 /* draw.vert */,
+				28EF34971D317BE000012D57 /* update.frag */,
+				28EF34981D317BE000012D57 /* update.vert */,
+			);
+			name = shaders120;
+			path = bin/data/shaders120;
+			sourceTree = SOURCE_ROOT;
+		};
+		28EF34991D317BE000012D57 /* shaders330 */ = {
+			isa = PBXGroup;
+			children = (
+				28EF349A1D317BE000012D57 /* draw.frag */,
+				28EF349B1D317BE000012D57 /* draw.vert */,
+				28EF349C1D317BE000012D57 /* update.frag */,
+				28EF349D1D317BE000012D57 /* update.vert */,
+			);
+			name = shaders330;
+			path = bin/data/shaders330;
+			sourceTree = SOURCE_ROOT;
+		};
 		6948EE371B920CB800B5AC1A /* local_addons */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,9 +157,11 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				28EF34941D317BE000012D57 /* shaders120 */,
+				28EF34991D317BE000012D57 /* shaders330 */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
-				00A1BFCBB38848AD0E0C8539 /* testApp.cpp */,
-				2D129AB0F7D46B8DFCEADEDB /* testApp.h */,
+				00A1BFCBB38848AD0E0C8539 /* ofApp.cpp */,
+				2D129AB0F7D46B8DFCEADEDB /* ofApp.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -229,7 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
-				29D734F0DDECC8C5978185D7 /* testApp.cpp in Sources */,
+				29D734F0DDECC8C5978185D7 /* ofApp.cpp in Sources */,
 				900DDEDCFE3FAF10C3318D7C /* GpuParticles.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -41,7 +41,7 @@ namespace itg
     {
     }
     
-    void GpuParticles::init(unsigned width, unsigned height, ofPrimitiveMode primitive, bool loadShaders, unsigned numDataTextures)
+    void GpuParticles::init(unsigned width, unsigned height, ofPrimitiveMode primitive, bool loadDefaultShaders, unsigned numDataTextures)
     {
         this->width = width;
         this->height = height;
@@ -75,12 +75,37 @@ namespace itg
         }
         mesh.setMode(primitive);
         
+        quadMesh.addVertex(ofVec3f(-1.f, -1.f, 0.f));
+        quadMesh.addVertex(ofVec3f(1.f, -1.f, 0.f));
+        quadMesh.addVertex(ofVec3f(1.f, 1.f, 0.f));
+        quadMesh.addVertex(ofVec3f(-1.f, 1.f, 0.f));
+        
+        quadMesh.addTexCoord(ofVec2f(0.f, 0.f));
+        quadMesh.addTexCoord(ofVec2f(width, 0.f));
+        quadMesh.addTexCoord(ofVec2f(width, height));
+        quadMesh.addTexCoord(ofVec2f(0.f, height));
+        
+        quadMesh.addIndex(0);
+        quadMesh.addIndex(1);
+        quadMesh.addIndex(2);
+        quadMesh.addIndex(0);
+        quadMesh.addIndex(2);
+        quadMesh.addIndex(3);
+        
+        quadMesh.setMode(OF_PRIMITIVE_TRIANGLES);
+        
         // shaders
-        if (loadShaders)
+        if (loadDefaultShaders)
         {
             updateShader.load(UPDATE_SHADER_NAME);
             drawShader.load(DRAW_SHADER_NAME);
         }
+    }
+    
+    void GpuParticles::loadShaders(const string& updateShaderName, const string& drawShaderName)
+    {
+        updateShader.load(updateShaderName);
+        drawShader.load(drawShaderName);
     }
     
     void GpuParticles::update()
@@ -98,7 +123,8 @@ namespace itg
         updateShader.begin();
         ofNotifyEvent(updateEvent, updateShader, this);
         setUniforms(updateShader);
-        texturedQuad(-1, -1, 2, 2, width, height);
+        //texturedQuad(-1, -1, 2, 2, width, height);
+        quadMesh.draw();
         updateShader.end();
         glPopAttrib();
         
@@ -149,24 +175,6 @@ namespace itg
         memset(zeroes, 0, sizeof(float) * width * height * FLOATS_PER_TEXEL);
         loadDataTexture(idx, zeroes, x, y, width, height);
         delete[] zeroes;
-    }
-    
-    void GpuParticles::texturedQuad(float x, float y, float width, float height, float s, float t)
-    {
-        // TODO: change to triangle fan/strip
-        glBegin(GL_QUADS);
-        glTexCoord2f(0, 0);
-        glVertex3f(x, y, 0);
-        
-        glTexCoord2f(s, 0);
-        glVertex3f(x + width, y, 0);
-        
-        glTexCoord2f(s, t);
-        glVertex3f(x + width, y + height, 0);
-        
-        glTexCoord2f(0, t);
-        glVertex3f(x, y + height, 0);
-        glEnd();
     }
     
     void GpuParticles::save(const string& fileName)

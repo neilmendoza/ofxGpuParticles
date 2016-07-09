@@ -57,9 +57,11 @@ namespace itg
         GpuParticles();
         
         void init(unsigned width, unsigned height,
-                  ofPrimitiveMode primitive = OF_PRIMITIVE_POINTS, bool loadShaders = true, unsigned numDataTextures = 2);
+                  ofPrimitiveMode primitive = OF_PRIMITIVE_POINTS, bool loadDefaultShaders = false, unsigned numDataTextures = 2);
         void update();
         void draw();
+        
+        void loadShaders(const string& updateShaderName, const string& drawShaderName);
         
         void loadDataTexture(unsigned idx, float* data,
                              unsigned x = 0, unsigned y = 0, unsigned width = 0, unsigned height = 0);
@@ -86,11 +88,11 @@ namespace itg
         void load(const string& fileName);
         
     private:
-        void texturedQuad(float x, float y, float width, float height, float s, float t);
         void setUniforms(ofShader& shader);
         
         ofFbo fbos[2];
         ofVboMesh mesh;
+        ofVboMesh quadMesh;
         ofShader updateShader, drawShader;
         unsigned currentReadFbo;
         unsigned textureLocation;
