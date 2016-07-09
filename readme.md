@@ -14,8 +14,4 @@ settings.numColorbuffers = settings.colorFormats.size();
 
 ## Usage
 
-Coming soon, for now, see example.
-
-## TODO
-
-Add in functionality to use programmable renderer in addition to stone age OpenGL.
+See example.
