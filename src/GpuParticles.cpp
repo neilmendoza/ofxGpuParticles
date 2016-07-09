@@ -123,7 +123,6 @@ namespace itg
         updateShader.begin();
         ofNotifyEvent(updateEvent, updateShader, this);
         setUniforms(updateShader);
-        //texturedQuad(-1, -1, 2, 2, width, height);
         quadMesh.draw();
         updateShader.end();
         glPopAttrib();
