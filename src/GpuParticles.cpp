@@ -49,7 +49,7 @@ namespace itg
         
         // fbos
         ofFbo::Settings s;
-        s.internalformat = GL_RGBA32F_ARB;
+        s.internalformat = GL_RGBA16F_ARB;
         s.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
         s.minFilter = GL_NEAREST;
         s.maxFilter = GL_NEAREST;
@@ -113,7 +113,7 @@ namespace itg
         fbos[1 - currentReadFbo].begin(false);
         glPushAttrib(GL_ENABLE_BIT);
         // we set up no camera model and ignore the modelview and projection matrices
-        // in the vertex shader, we make a viewport large enought to ensure the shader
+        // in the vertex shader, we make a viewport large enough to ensure the shader
         // is executed for each pixel
         glViewport(0, 0, width, height);
         glDisable(GL_BLEND);
