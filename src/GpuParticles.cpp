@@ -49,7 +49,7 @@ namespace itg
         
         // fbos
         ofFbo::Settings s;
-        s.internalformat = GL_RGBA16F_ARB;
+        s.internalformat = GL_RGBA32F_ARB;
         s.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
         s.minFilter = GL_NEAREST;
         s.maxFilter = GL_NEAREST;
