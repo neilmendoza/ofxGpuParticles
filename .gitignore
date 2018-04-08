@@ -3,3 +3,4 @@
 example/bin/*.app
 */*/xcuserdata
 */*/*/xcuserdata
+*/.idea
