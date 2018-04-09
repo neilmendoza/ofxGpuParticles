@@ -86,10 +86,13 @@ namespace itg
         
         void save(const string& fileName);
         void load(const string& fileName);
-        
-    private:
+
+        // this will be called for you by ofxGpuParticles::draw()
+        // you should only need to call it yourself if you are not
+        // using that function (i.e. custom particle rendering)
         void setUniforms(ofShader& shader);
-        
+
+    private:
         ofFbo fbos[2];
         ofVboMesh mesh;
         ofVboMesh quadMesh;
