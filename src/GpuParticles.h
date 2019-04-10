@@ -91,6 +91,11 @@ namespace itg
         // you should only need to call it yourself if you are not
         // using that function (i.e. custom particle rendering)
         void setUniforms(ofShader& shader);
+        
+        // if you want to configure an ofFbo or ofTexture
+        // to feed extra data to the particle system
+        ofFbo::Settings getFboSettings(unsigned numColorBuffers = 1) const;
+        ofTextureData getTextureSettings() const;
 
     private:
         ofFbo fbos[2];

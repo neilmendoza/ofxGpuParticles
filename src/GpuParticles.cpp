@@ -37,7 +37,7 @@ namespace itg
     const string GpuParticles::UPDATE_SHADER_NAME = "update";
     const string GpuParticles::DRAW_SHADER_NAME = "draw";
     
-    GpuParticles::GpuParticles() : currentReadFbo(0), textureLocation(0)
+    GpuParticles::GpuParticles() : currentReadFbo(0), textureLocation(0), width(0), height(0)
     {
     }
     
@@ -48,16 +48,7 @@ namespace itg
         numFloats = width * height * FLOATS_PER_TEXEL;
         
         // fbos
-        ofFbo::Settings s;
-        s.internalformat = GL_RGBA32F_ARB;
-        s.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
-        s.minFilter = GL_NEAREST;
-        s.maxFilter = GL_NEAREST;
-        s.wrapModeHorizontal = GL_CLAMP;
-        s.wrapModeVertical = GL_CLAMP;
-        s.width = width;
-        s.height = height;
-        s.numColorbuffers = numDataTextures;
+        ofFbo::Settings s = getFboSettings(numDataTextures);
         for (unsigned i = 0; i < 2; ++i)
         {
             fbos[i].allocate(s);
@@ -174,6 +165,45 @@ namespace itg
         memset(zeroes, 0, sizeof(float) * width * height * FLOATS_PER_TEXEL);
         loadDataTexture(idx, zeroes, x, y, width, height);
         delete[] zeroes;
+    }
+    
+    ofFbo::Settings GpuParticles::getFboSettings(unsigned numColorBuffers) const
+    {
+        if (!width || !height)
+        {
+            ofLogFatalError() << "GpuParticles::getFboSettings() called before GpuParticles::init()";
+            return ofFbo::Settings();
+        }
+        ofFbo::Settings s;
+        s.internalformat = GL_RGBA32F_ARB;
+        s.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
+        s.minFilter = GL_NEAREST;
+        s.maxFilter = GL_NEAREST;
+        s.wrapModeHorizontal = GL_CLAMP;
+        s.wrapModeVertical = GL_CLAMP;
+        s.width = width;
+        s.height = height;
+        s.numColorbuffers = numColorBuffers;
+        return s;
+    }
+    
+    ofTextureData GpuParticles::getTextureSettings() const
+    {
+        if (!width || !height)
+        {
+            ofLogFatalError() << "GpuParticles::getFboSettings() called before GpuParticles::init()";
+            return ofTextureData();
+        }
+        ofTextureData d;
+        d.glInternalFormat = GL_RGBA32F_ARB;
+        d.textureTarget = GL_TEXTURE_RECTANGLE_ARB;
+        d.minFilter = GL_NEAREST;
+        d.magFilter = GL_NEAREST;
+        d.wrapModeHorizontal = GL_CLAMP;
+        d.wrapModeVertical = GL_CLAMP;
+        d.width = width;
+        d.height = height;
+        return d;
     }
     
     void GpuParticles::save(const string& fileName)
