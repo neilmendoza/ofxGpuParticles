@@ -33,4 +33,4 @@
 
 #include "GpuParticles.h"
 
-typedef itg::GpuParticles ofxGpuParticles;
+typedef nm::GpuParticles ofxGpuParticles;

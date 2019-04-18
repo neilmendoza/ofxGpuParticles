@@ -31,7 +31,7 @@
  */
 #include "GpuParticles.h"
 
-namespace itg
+namespace nm
 {
     const string GpuParticles::UNIFORM_PREFIX = "particles";
     const string GpuParticles::UPDATE_SHADER_NAME = "update";

@@ -33,7 +33,7 @@
 
 #include "ofMain.h"
 
-namespace itg
+namespace nm
 {
     /**
      * For now, only uses RGBA and TEXTURE_RECTANGLE to make usage simpler
