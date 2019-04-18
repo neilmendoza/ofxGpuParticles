@@ -134,11 +134,18 @@ namespace itg
     
     void GpuParticles::setUniforms(ofShader& shader)
     {
+        unsigned textureLocationOffset = 0;
         for (unsigned i = 0; i < fbos[currentReadFbo].getNumTextures(); ++i)
         {
             ostringstream oss;
             oss << UNIFORM_PREFIX << ofToString(i);
-            shader.setUniformTexture(oss.str().c_str(), fbos[currentReadFbo].getTexture(i), i + textureLocation);
+            shader.setUniformTexture(oss.str().c_str(), fbos[currentReadFbo].getTexture(i), textureLocationOffset + textureLocation);
+            textureLocationOffset++;
+        }
+        for (auto& r : readOnlyDataTextures)
+        {
+            shader.setUniformTexture(r.first, r.second, textureLocationOffset + textureLocation);
+            textureLocationOffset++;
         }
     }
     
@@ -165,6 +172,22 @@ namespace itg
         memset(zeroes, 0, sizeof(float) * width * height * FLOATS_PER_TEXEL);
         loadDataTexture(idx, zeroes, x, y, width, height);
         delete[] zeroes;
+    }
+    
+    void GpuParticles::loadReadOnlyDataTexture(const string& name, float* data,
+                                 unsigned x, unsigned y, unsigned width, unsigned height)
+    {
+        if (!width) width = this->width;
+        if (!height) height = this->height;
+        if (readOnlyDataTextures.find(name) == readOnlyDataTextures.end())
+        {
+            readOnlyDataTextures[name] = ofTexture();
+            readOnlyDataTextures[name].allocate(getTextureSettings());
+        }
+        readOnlyDataTextures[name].bind();
+        glTexSubImage2D(GL_TEXTURE_RECTANGLE_ARB, 0, x, y, width, height, GL_RGBA, GL_FLOAT, data);
+        readOnlyDataTextures[name].unbind();
+        
     }
     
     ofFbo::Settings GpuParticles::getFboSettings(unsigned numColorBuffers) const

@@ -68,6 +68,9 @@ namespace itg
         void zeroDataTexture(unsigned idx,
                              unsigned x = 0, unsigned y = 0, unsigned width = 0, unsigned height = 0);
         
+        void loadReadOnlyDataTexture(const string& name, float* data,
+                                     unsigned x = 0, unsigned y = 0, unsigned width = 0, unsigned height = 0);
+        
         unsigned getWidth() const { return width; }
         unsigned getHeight() const { return height; }
         unsigned getNumFloats() const { return numFloats; }
@@ -99,6 +102,8 @@ namespace itg
 
     private:
         ofFbo fbos[2];
+        map<string, ofTexture> readOnlyDataTextures;
+        
         ofVboMesh mesh;
         ofVboMesh quadMesh;
         ofShader updateShader, drawShader;
