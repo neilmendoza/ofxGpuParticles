@@ -102,12 +102,12 @@ namespace nm
     void GpuParticles::update()
     {
         fbos[1 - currentReadFbo].begin(OF_FBOMODE_NODEFAULTS);
-        glPushAttrib(GL_ENABLE_BIT);
+        ofPushStyle();
         // we set up no camera model and ignore the modelview and projection matrices
         // in the vertex shader, we make a viewport large enough to ensure the shader
         // is executed for each pixel
         glViewport(0, 0, width, height);
-        glDisable(GL_BLEND);
+        ofDisableBlendMode();
         ofSetColor(255, 255, 255);
         fbos[1 - currentReadFbo].activateAllDrawBuffers();
         
@@ -116,8 +116,8 @@ namespace nm
         setUniforms(updateShader);
         quadMesh.draw();
         updateShader.end();
-        glPopAttrib();
-        
+        ofPopStyle();
+
         fbos[1 - currentReadFbo].end();
         
         currentReadFbo = 1 - currentReadFbo;
