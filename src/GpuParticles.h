@@ -86,6 +86,7 @@ namespace nm
         // advanced
         ofShader& getUpdateShaderRef() { return updateShader; }
         ofShader& getDrawShaderRef() { return drawShader; }
+        ofFbo& getCurrentReadFboRef() { return fbos[currentReadFbo]; }
         
         void save(const string& fileName);
         void load(const string& fileName);
